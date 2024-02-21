@@ -1,1 +1,1 @@
-# MindBodyCheckin
+# EasyGymCheckin

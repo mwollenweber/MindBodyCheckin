@@ -1,0 +1,10 @@
+export GYMNAME="NOLABJJ"
+export SITEUSER="Siteowner"
+export SITEPASSWORD="apitest1234"
+export APIKEY=""
+export SITEID="-99"
+export MAXDIST=2
+export DBNAME=""
+export DBUSER=""
+export DBPASSWORD=""
+export DBHOST=""
