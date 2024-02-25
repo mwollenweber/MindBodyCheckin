@@ -83,7 +83,6 @@ def loadClasses(mbapi):
 
 def loadClients(mbapi):
     for client in mbapi.getClients():
-        pprint(client)
         try:
             active = client.get('Active')
             email = client.get('Email')
