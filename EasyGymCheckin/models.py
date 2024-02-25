@@ -4,8 +4,8 @@ from django.db import models
 class gymClass(models.Model):
     id = models.IntegerField(primary_key=True)
     name = models.CharField(max_length=200)
-    startTime = models.DateTimeField(blank=True, editable=True)
-    endTime = models.DateTimeField(blank=True, editable=True)
+    startTime = models.DateTimeField()
+    endTime = models.DateTimeField()
     active = models.BooleanField(default=True)
 
     def __str__(self):
