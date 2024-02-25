@@ -36,6 +36,7 @@ class gymCheckin(models.Model):
     lat = models.FloatField(blank=True, editable=True, default=0)
     long = models.FloatField(blank=True, editable=True, default=0)
     distance = models.FloatField(blank=True, editable=True)
+    successful = models.BooleanField(default=False)
 
     def __str__(self):
         return self.id

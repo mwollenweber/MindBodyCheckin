@@ -41,7 +41,7 @@ def index(request):
         #.filter(endTime__gte=datetime.now(timezone.utc) - timedelta(minutes=20))
         g = (gymClass.objects.filter(active=True)
              #.filter(startTime__lte=datetime.now(timezone.utc) + timedelta(minutes=60))
-             .filter(endTime__gte=datetime.now())
+             .filter(endTime__gte=datetime.now() - timedelta(minutes=20))
              .order_by('startTime'))
 
         if not g:
@@ -81,18 +81,21 @@ def index(request):
             long = float(request.POST.get('long') or 0.0)
             print(f"classid={classid}, clientid={clientid}, distance={distance}")
 
-            if distance > settings.MAXDIST:
-                raise Exception("Unable to sign in. You're too far away!")
-
-            if not validateSignIn(classid, clientid, distance, lat, long):
-                raise Exception("Invalid Sign In")
-
+            #create the attempted checkin for history
             gymCheckin.objects.create(client_id=clientid,
                                       gymClass_id=classid,
                                       distance=distance,
                                       lat=lat,
                                       long=long,
                                       )
+
+            if distance > settings.MAXDIST:
+                raise Exception("Unable to sign in. You're too far away!")
+
+            if not validateSignIn(classid, clientid, distance, lat, long):
+                raise Exception("Invalid Sign In")
+
+
             mbapi.addClientToClass(clientid, classid)
             return HttpResponse("Success. You're Signed in")
 
