@@ -14,12 +14,12 @@ app.conf.beat_schedule = {
         'task': 'test',
         'schedule': 60.0,
     },
-    'syncClients': {
-        'task': 'syncClients',
-        'schedule': 400.0,
-    },
+    # 'syncClients': {
+    #     'task': 'syncClients',
+    #     'schedule': 400.0,
+    # },
     'syncClasses': {
         'task': 'syncClasses',
-        'schedule': 300.0,
+        'schedule': 120.0,
     },
 }

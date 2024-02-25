@@ -2,6 +2,7 @@ import http.client
 import json
 import traceback
 from django.utils.timezone import make_aware
+from datetime import datetime
 from pprint import pprint
 from .models import gymClient, gymClass
 
@@ -70,13 +71,16 @@ def loadClasses(mbapi):
     for c in mbapi.getClasses():
         try:
             if c['Active'] is True:
-                start = c['StartDateTime']
-                end = c['EndDateTime']
+                start =  datetime.fromisoformat(c['StartDateTime'])
+                end =  datetime.fromisoformat(c['EndDateTime'])
                 id = c['Id']
                 name = c['ClassDescription']['Name']
                 active = c['Active']
                 print(f"id={id}, name={name}, start={start}, end={end}")
-                gymClass.objects.update_or_create(id=id, startTime=start, endTime=end, name=name, active=active)
+                gymClass.objects.update_or_create(id=id,
+                                                  startTime=start,
+                                                  endTime=end,
+                                                  name=name, active=active)
         except Exception as e:
             print(traceback.format_exc())
 

@@ -36,9 +36,12 @@ def fail(request):
 
 def index(request):
     if request.method == 'GET':
+        nw = datetime.now()
+        print(f"NOW = {nw}")
+        #.filter(endTime__gte=datetime.now(timezone.utc) - timedelta(minutes=20))
         g = (gymClass.objects.filter(active=True)
              #.filter(startTime__lte=datetime.now(timezone.utc) + timedelta(minutes=60))
-             .filter(endTime__gte=datetime.now(timezone.utc) - timedelta(minutes=20))
+             .filter(endTime__gte=datetime.now())
              .order_by('startTime'))
 
         if not g:
