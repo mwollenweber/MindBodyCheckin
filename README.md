@@ -16,6 +16,7 @@ cd MindBodyCheckin
 ## Configure your Python environment
 
 ```bash
+source MindBodyCheckin.rc
 virtualenv env
 source env/bin/activate
 pip install -r requirements.txt
