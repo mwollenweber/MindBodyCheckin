@@ -13,7 +13,7 @@ cd MindBodyCheckin
 
 ```
 
-## Configure your Python environment
+## Configure your environment
 
 ```bash
 virtualenv env
@@ -21,14 +21,23 @@ source env/bin/activate
 pip install -r requirements.txt
 ```
 
+Edit your settings
+```
+cp xample_config.rc config.rc
+emacs -nw config.rc
+source config.rc
+```
+
 ## Run Celery
 ```
+source mindbodycheckin.rc
 ./run_celery.sh &
 ./run_celery_beat.sh &
 ```
 
 ## Run the server
 ```
+source mindbodycheckin.rc
 python manage.py runserver
 ```
 
@@ -47,5 +56,3 @@ python manage.py runserver
 
 # License
 Copyright Matthew Wollenweber. All rights reserved.
-
-
