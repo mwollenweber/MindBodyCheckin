@@ -10,10 +10,10 @@ app.conf.timezone = 'UTC'
 app.autodiscover_tasks()
 
 app.conf.beat_schedule = {
-    'test': {
-        'task': 'test',
-        'schedule': 60.0,
-    },
+    # 'test': {
+    #     'task': 'test',
+    #     'schedule': 60.0,
+    # },
     'syncClients': {
         'task': 'syncClients',
         'schedule': 600.0,
